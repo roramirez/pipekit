@@ -43,9 +43,7 @@ module Pipekit
     attr_reader :response_data, :resource
 
     def pagination_data
-      response_data
-        .fetch("additional_data", {})
-        .fetch("pagination", {})
+      response_data.dig("additional_data", "pagination") || {}
     end
 
     def response_body
